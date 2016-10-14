@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <section>
+            <h2>Books List</h2>
+
+            <table class="table table-hover">
+                <thead>
+                    <th>title</th>
+                    <th>author</th>
+                    <th>genere</th>
+                    <th>year</th>
+                </thead>
+                <tbody>
+                    <tr data-ng-dblclick="edit()" data-ng-repeat="item in data.books" data-ng-click="selectRow($index)" data-ng-class="{'active': selectedRowIndex === $index}">
+                      <td data-ng-bind="item.title"></td>
+                      <td data-ng-bind="item.author"></td>
+                      <td data-ng-bind='item.genere'></td>
+                      <td data-ng-bind='item.year'></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button data-ng-hide="false" data-ng-click="add()" class="btn btn-default">Add Book</button>
+            <button data-ng-hide="selectedRowIndex === undefined" data-ng-click="edit()" class="btn btn-default">Edit Book</button>
+        </section>
+
+    </body>
+</html>

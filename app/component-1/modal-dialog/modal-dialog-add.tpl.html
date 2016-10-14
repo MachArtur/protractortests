@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+    <head lang="en">
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+
+    <body>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Add Book!</h3>
+            </div>
+            <form name="data.form">
+                <div class="form-group">
+                  <label>Title:</label>
+                    <div  data-ng-class="{'has-error bg-danger': data.form.title.$invalid}">
+                        <input name="title" type="text" data-ng-model="data.book.title" data-ng-required="true" class="form-control">
+                    </div>
+                    <label>Author:</label>
+                    <div  data-ng-class="{'has-error bg-danger': data.form.author.$invalid}">
+                        <input name="author" type="text" data-ng-model="data.book.author" data-ng-required="true" class="form-control">
+                    </div>
+                    <label>genere:</label>
+                    <div  data-ng-class="{'has-error bg-danger': data.form.genere.$invalid}">
+                        <select name="genere" class="form-control" data-ng-model="data.book.genere" ng-options="item for item in genereItems" data-ng-required="true" id="genere1">
+                        </select>
+                    </div>
+                    <style>
+                        .full button span {
+                            background-color: limegreen;
+                            border-radius: 32px;
+                            color: black;
+                        }
+
+                        .partially button span {
+                            background-color: orange;
+                            border-radius: 32px;
+                            color: black;
+                        }
+
+                    </style>
+                    <div ng-controller="DatepickerDemoCtrl" data-ng-class="{'has-error bg-danger': data.form.data-picker-add.$invalid}">
+                        <hr/>
+                        <div class="row">
+                            <div class="col-md-6" data-ng-class="{'has-error bg-danger': data.form.data-picker-add.$invalid}">
+                                <p class="input-group">
+                                    <input
+                                        name="data-picker-add"
+                                        type="text"
+                                        class="form-control"
+                                        uib-datepicker-popup="{{format}}"
+                                        data-ng-model="data.book.year"
+                                        is-open="status.opened"
+                                        datepicker-options="dateOptions"
+                                        date-disabled="disabled(date, mode)"
+                                        close-text="Close"
+                                        readonly="true"/>
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="open($event)">
+                                            <i class="glyphicon glyphicon-calendar"></i>
+                                        </button>
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer ">
+                    <button class="btn btn-primary" ng-disabled="data.form.$invalid" data-ng-click="add()">Add</button>
+                    <button  class="btn btn-cancel" data-ng-click="cancel()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </body>
+
+</html>
+<!--"id": 2,
+        "version": 0,
+        "genere": "it",
+        "year": 2001,
+        "title": "Python. Wprowadzenie",
+        "author": "Mark Lutz, David Ascher"-->
