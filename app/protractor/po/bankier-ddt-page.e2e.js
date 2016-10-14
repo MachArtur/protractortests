@@ -26,16 +26,18 @@ BankierDdt.prototype.clickGivenPositionInRynkiTab = function (rynkiContent) {
 }
 
 BankierDdt.prototype.waitForElementRynki = function () {
-    browser.wait(function () {
-        this.rynkiInNavBarElement.isPresent();
-    });
- //   browser.driver.wait(protractor.until.elementIsNotVisible(this.rynkiInNavBarElement));
+    // browser.wait(function () {
+    //     this.rynkiInNavBarElement.isPresent();
+    // });
+    expect(this.rynkiInNavBarElement.isPresent()).toBeTruthy();
+    //   browser.driver.wait(protractor.until.elementIsNotVisible(this.rynkiInNavBarElement));
 }
 
 BankierDdt.prototype.waitForElementOnSubRynkiPages = function () {
-    browser.wait(function () {
-        return this.elementOnSubRynkiPages.isPresent();
-    });
+    // browser.wait(function () {
+    //     return this.elementOnSubRynkiPages.isPresent();
+    // });
+    expect(this.elementOnSubRynkiPages.isPresent()).toBeTruthy();
     // browser.driver.wait(protractor.until.elementIsNotVisible(this.elementOnSubRynkiPages));
 }
 

@@ -45,14 +45,18 @@ describe('bankier.pl Data Driven Tests', function () {
 
 using(rynkiContentData, function (inputData) {
     it('test open '+inputData.text+' in Rynki naviBar Tab', function () {
+        myLogger('Open bankier page');
         bankierMainPage.openBankierPage();
-        //bankierMainPage.waitForElementRynki();
+        myLogger('Wait for element rynki');
+        bankierMainPage.waitForElementRynki();
+        myLogger('Validate main page');
         expect(browser.getCurrentUrl()).toEqual(setupData.bankierUrl);
-       bankierMainPage.clickGivenPositionInRynkiTab(inputData.text);
-       browser.sleep(3000);
-       // bankierMainPage.waitForElementOnSubRynkiPages();
+        myLogger('Open '+inputData.text+' in rynki tab' );
+        bankierMainPage.clickGivenPositionInRynkiTab(inputData.text);
+        myLogger('Waiting for element on sub page');
+        bankierMainPage.waitForElementOnSubRynkiPages();
+        myLogger('Validate url of sub page');
         expect(browser.getCurrentUrl()).toEqual(inputData.url);
-        browser.sleep(3000);
     });
 });
 });
